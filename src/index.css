@@ -1,0 +1,307 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 1 84% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 31 90% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 31 90% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 207 90% 54%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23f1f0fb' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
+
+.service-card {
+  @apply relative overflow-hidden rounded-lg;
+  height: 260px;
+}
+
+.service-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end text-white transition-all duration-300;
+}
+
+.service-card:hover .service-card-overlay {
+  @apply from-primary/90 to-primary/60;
+}
+
+.service-card-icon {
+  @apply bg-white rounded-full p-3 w-12 h-12 flex items-center justify-center mb-3 transition-transform duration-300;
+}
+
+.service-card:hover .service-card-icon {
+  @apply transform scale-110;
+}
+
+.numbered-process-item {
+  @apply relative pl-14 pb-8;
+}
+
+.numbered-process-item::before {
+  content: "";
+  @apply absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200;
+}
+
+.numbered-process-item:last-child::before {
+  @apply bottom-8;
+}
+
+.numbered-process-item .number {
+  @apply absolute left-0 top-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold z-10;
+}
+
+.blog-card {
+  @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300;
+}
+
+.blog-card:hover {
+  @apply shadow-lg -translate-y-1;
+}
+
+.nav-link {
+  @apply relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  @apply w-full;
+}
+
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-animate.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================
+   NEUMORPHIC STYLE RULES FOR ADMIN PORTAL
+   ========================================== */
+.admin-portal {
+  background-color: #eef2f7 !important;
+  color: #334155 !important;
+}
+
+.admin-portal,
+.admin-portal * {
+  --background: 210 20% 95% !important;
+  --foreground: 222.2 84% 4.9% !important;
+  --card: 210 20% 95% !important;
+  --card-foreground: 222.2 84% 4.9% !important;
+  --popover: 210 20% 95% !important;
+  --popover-foreground: 222.2 84% 4.9% !important;
+  --muted: 210 40% 96.1% !important;
+  --muted-foreground: 215.4 16.3% 46.9% !important;
+  --border: 214.3 31.8% 91.4% !important;
+  --input: 214.3 31.8% 91.4% !important;
+  --ring: 221.2 83.2% 53.3% !important;
+}
+
+/* Neumorphic Raised Plates (Cards & Main Panels) */
+.admin-portal aside > div,
+.admin-portal main,
+.admin-portal .card,
+.admin-portal .bg-white,
+.admin-portal .bg-card,
+.admin-portal div[class*="bg-white"],
+.admin-portal div.bg-card,
+.admin-portal [class*="bg-white"],
+.admin-portal [class*="bg-card"] {
+  background-color: #eef2f7 !important;
+  border: none !important;
+  border-radius: 20px !important;
+  box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff !important;
+}
+
+/* Neumorphic Inset/Sunken Plates (Form Inputs, Textareas, Selects) */
+.admin-portal input,
+.admin-portal textarea,
+.admin-portal select,
+.admin-portal div[class*="bg-slate-50"] {
+  background-color: #eef2f7 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: inset 3px 3px 6px #cbd5e1, inset -3px -3px 6px #ffffff !important;
+  color: #334155 !important;
+  outline: none !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+.admin-portal input:focus,
+.admin-portal textarea:focus,
+.admin-portal select:focus {
+  box-shadow: inset 1px 1px 3px #cbd5e1, inset -1px -1px 3px #ffffff, 0 0 0 2px rgba(37, 99, 235, 0.25) !important;
+}
+
+/* Neumorphic Buttons */
+.admin-portal button:not([class*="bg-transparent"]):not([class*="text-rose-600"]):not([class*="text-rose-500"]):not([class*="active-tab"]),
+.admin-portal button[class*="bg-blue-600"],
+.admin-portal button[class*="bg-red-600"],
+.admin-portal button[class*="bg-primary"],
+.admin-portal form button:not([class*="bg-transparent"]) {
+  background-color: #eef2f7 !important;
+  border: none !important;
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  box-shadow: 4px 4px 8px #cbd5e1, -4px -4px 8px #ffffff !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.admin-portal button:not([class*="bg-transparent"]):not([class*="text-rose-600"]):not([class*="text-rose-500"]):not([class*="active-tab"]):hover,
+.admin-portal button[class*="bg-blue-600"]:hover,
+.admin-portal button[class*="bg-red-600"]:hover,
+.admin-portal button[class*="bg-primary"]:hover,
+.admin-portal form button:not([class*="bg-transparent"]):hover {
+  box-shadow: 2px 2px 5px #cbd5e1, -2px -2px 5px #ffffff !important;
+  color: #2563eb !important;
+}
+
+.admin-portal button:not([class*="bg-transparent"]):not([class*="text-rose-600"]):not([class*="text-rose-500"]):not([class*="active-tab"]):active,
+.admin-portal button[class*="bg-blue-600"]:active,
+.admin-portal button[class*="bg-red-600"]:active,
+.admin-portal button[class*="bg-primary"]:active,
+.admin-portal form button:not([class*="bg-transparent"]):active {
+  box-shadow: inset 3px 3px 6px #cbd5e1, inset -3px -3px 6px #ffffff !important;
+}
+
+/* Tables in Neumorphic Grid */
+.admin-portal table {
+  border-collapse: separate !important;
+  border-spacing: 0 10px !important;
+}
+
+.admin-portal tr {
+  background-color: transparent !important;
+}
+
+.admin-portal tr td {
+  background-color: #eef2f7 !important;
+  border: none !important;
+  box-shadow: 3px 3px 6px #cbd5e1, -3px -3px 6px #ffffff !important;
+  padding: 12px 16px !important;
+}
+
+.admin-portal tr td:first-child {
+  border-top-left-radius: 12px !important;
+  border-bottom-left-radius: 12px !important;
+}
+
+.admin-portal tr td:last-child {
+  border-top-right-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.admin-portal th {
+  border: none !important;
+  color: #64748b !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  font-size: 10px !important;
+  letter-spacing: 0.05em !important;
+  padding-bottom: 4px !important;
+}
+
+/* Borders elimination helper */
+.admin-portal [class*="border-slate-"],
+.admin-portal [class*="border-slate-200"],
+.admin-portal [class*="border-slate-250"] {
+  border-color: transparent !important;
+}
