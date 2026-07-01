@@ -8,34 +8,29 @@ import { Shield, Lock, Mail, Eye, EyeOff, KeyRound } from "lucide-react";
 import { motion } from "framer-motion";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('admin@amassmiddleeast.com');
-  const [password, setPassword] = useState('@massmiddleeast');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simple credential check
-    if (email === 'admin@amassmiddleeast.com' && password === '@massmiddleeast') {
-      localStorage.setItem('isAdminLoggedIn', 'true');
-      toast({
-        title: "Login successful",
-        description: "Welcome to the Admin Panel!",
-      });
-      navigate('/admin');
-    } else {
+    try {
+      // TODO: Add your backend authentication / API request logic here
+      
+    } catch (error) {
       toast({
         variant: "destructive",
         title: "Login failed",
-        description: "Invalid credentials. Please try again.",
+        description: "An unexpected error occurred. Please try again.",
       });
+    } finally {
+      setIsLoading(false);
     }
-    
-    setIsLoading(false);
   };
 
   return (
