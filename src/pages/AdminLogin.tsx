@@ -85,7 +85,7 @@ const AdminLogin = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@amassmiddleeast.com"
+                  placeholder=""
                   required
                   className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-4 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
                 />
