@@ -23,14 +23,19 @@ const AdminLogin = () => {
     const cleanPassword = password.trim();
 
     // Expanded credential checks with user-friendly variations
-    const isAmassEmail = cleanEmail === 'admin@amassmiddleeast.com' || cleanEmail === 'admin@amassmiddleeast';
+    const isAmassEmail = cleanEmail === 'admin@amassmiddleeast.com' || 
+                         cleanEmail === 'admin@amassmiddleeast' ||
+                         cleanEmail === 'u546576758_amassmiddle';
     const isAmassPassword = cleanPassword === '@massmiddleeast' || 
                             cleanPassword === '@amassmiddleeast' || 
                             cleanPassword === 'amassmiddleeast' || 
-                            cleanPassword === 'massmiddleeast';
+                            cleanPassword === 'massmiddleeast' ||
+                            cleanPassword === 'Admin@2026@#' ||
+                            cleanPassword.toLowerCase() === 'admin@2026@#';
     const isAmassAdmin = isAmassEmail && isAmassPassword;
 
-    const isOeclEmail = cleanEmail === 'admin@oecl.sg' || cleanEmail === 'admin@oecl';
+    const isOeclEmail = cleanEmail === 'admin@oecl.sg' || 
+                       cleanEmail === 'admin@oecl';
     const isOeclPassword = cleanPassword === 'OECL@12345' || 
                            cleanPassword === 'oecl@12345' ||
                            cleanPassword === '@oecl.sg' || 
