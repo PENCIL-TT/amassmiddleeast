@@ -40,7 +40,6 @@ const AdminLogin = () => {
         description: "Invalid credentials. Please try again.",
       });
     }
-    
     setIsLoading(false);
   };
 
