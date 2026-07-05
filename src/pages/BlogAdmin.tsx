@@ -56,13 +56,20 @@ const BlogAdmin = () => {
     // Expanded credential checks with user-friendly variations
     const isAmassEmail = cleanEmail === 'admin@amassmiddleeast.com' || 
                          cleanEmail === 'admin@amassmiddleeast' ||
-                         cleanEmail === 'u546576758_amassmiddle';
+                         cleanEmail === 'u546576758_amassmiddle' ||
+                         cleanEmail === 'u546576758amassmiddle' ||
+                         cleanEmail === 'amassmiddle' ||
+                         cleanEmail === 'amassmiddleeast';
     const isAmassPassword = cleanPassword === '@massmiddleeast' || 
                             cleanPassword === '@amassmiddleeast' || 
                             cleanPassword === 'amassmiddleeast' || 
                             cleanPassword === 'massmiddleeast' ||
                             cleanPassword === 'Admin@2026@#' ||
-                            cleanPassword.toLowerCase() === 'admin@2026@#';
+                            cleanPassword.toLowerCase() === 'admin@2026@#' ||
+                            cleanPassword === 'Admin@2026' ||
+                            cleanPassword.toLowerCase() === 'admin@2026' ||
+                            cleanPassword === 'Admin@2026@' ||
+                            cleanPassword.toLowerCase() === 'admin@2026@';
     const isAmassAdmin = isAmassEmail && isAmassPassword;
 
     const isOeclEmail = cleanEmail === 'admin@oecl.sg' || 

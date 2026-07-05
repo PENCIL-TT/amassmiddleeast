@@ -59,35 +59,52 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
-    // Set up auth state listener FIRST
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+    let subscription: any = null;
+    try {
+      // Set up auth state listener FIRST
+      const res = supabase.auth.onAuthStateChange(
+        async (event, session) => {
+          setSession(session);
+          setUser(session?.user ?? null);
+          
+          if (session?.user) {
+            await fetchProfile(session.user.id);
+          } else {
+            setProfile(null);
+          }
+          
+          setIsLoading(false);
+        }
+      );
+      subscription = res.data?.subscription;
+    } catch (err) {
+      console.error("Error setting up auth state listener:", err);
+      setIsLoading(false);
+    }
+
+    try {
+      // THEN check for existing session
+      supabase.auth.getSession().then(async ({ data: { session } }) => {
         setSession(session);
         setUser(session?.user ?? null);
         
         if (session?.user) {
           await fetchProfile(session.user.id);
-        } else {
-          setProfile(null);
         }
         
         setIsLoading(false);
-      }
-    );
-
-    // THEN check for existing session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        await fetchProfile(session.user.id);
-      }
-      
+      }).catch((err) => {
+        console.error("Error in getSession promise:", err);
+        setIsLoading(false);
+      });
+    } catch (err) {
+      console.error("Error calling getSession:", err);
       setIsLoading(false);
-    });
+    }
 
-    return () => subscription.unsubscribe();
+    return () => {
+      if (subscription) subscription.unsubscribe();
+    };
   }, []);
 
   // Sign in with email and password
