@@ -108,26 +108,23 @@ const AdminLogin = () => {
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-6">
-            {/* Visually hidden fake inputs to trick browser autofill */}
-            <input type="text" name="username" style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} tabIndex={-1} readOnly />
-            <input type="password" name="password" style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} tabIndex={-1} readOnly />
 
             {/* Email Field */}
             <div className="space-y-2">
-              <Label htmlFor="adm-uid" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
+              <Label htmlFor="email" className="text-[10px] font-bold tracking-widest text-slate-550 uppercase font-mono px-1">
                 System ID
               </Label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
-                  id="adm-uid"
-                  name="adm-uid"
+                  id="email"
+                  name="email"
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter System Email"
                   required
-                  autoComplete="off"
+                  autoComplete="email"
                   className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-4 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
                 />
               </div>
@@ -135,20 +132,20 @@ const AdminLogin = () => {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <Label htmlFor="adm-pwd" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
+              <Label htmlFor="password" className="text-[10px] font-bold tracking-widest text-slate-550 uppercase font-mono px-1">
                 Passkey
               </Label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
-                  id="adm-pwd"
-                  name="adm-pwd"
+                  id="password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter Access Key"
                   required
-                  autoComplete="off"
+                  autoComplete="current-password"
                   className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-11 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
                 />
                 <button
