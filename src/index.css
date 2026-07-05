@@ -305,3 +305,9 @@
 .admin-portal [class*="border-slate-250"] {
   border-color: transparent !important;
 }
+
+/* Custom class to mask text inputs and prevent browser password autofill */
+.no-autofill-password {
+  -webkit-text-security: disc !important;
+  text-security: disc !important;
+}

@@ -2,7 +2,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Toaster } from '@/components/ui/sonner';
+import { Toaster as SonnerToaster } from '@/components/ui/sonner';
+import { Toaster as ToastToaster } from '@/components/ui/toaster';
 import CountryRedirect from '@/components/CountryRedirect';
 import Meta from '@/components/Meta';
 
@@ -253,7 +254,8 @@ const App: React.FC = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
-          <Toaster />
+          <SonnerToaster />
+          <ToastToaster />
         </AuthProvider>
       </Router>
     </QueryClientProvider>

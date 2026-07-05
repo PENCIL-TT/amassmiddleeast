@@ -44,7 +44,7 @@ const BlogAdmin = () => {
     }
     
     // Auto-authenticate if already logged in as admin
-    if (localStorage.getItem("isAdminLoggedIn") === "true") {
+    if (sessionStorage.getItem("isAdminLoggedIn") === "true") {
       setIsAuthenticated(true);
     }
   }, []);
@@ -55,7 +55,7 @@ const BlogAdmin = () => {
       (email === 'admin@amassmiddleeast.com' && password === '@massmiddleeast')
     ) {
       setIsAuthenticated(true);
-      localStorage.setItem('isAdminLoggedIn', 'true');
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
       toast({
         title: "Login Successful",
         description: "Welcome to the blog admin panel!",

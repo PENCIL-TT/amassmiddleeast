@@ -15,7 +15,7 @@ const AdminRoute: React.FC<AdminRouteProps> = ({ children }) => {
     return <LoadingSpinner />;
   }
 
-  const isLocalAdmin = localStorage.getItem("isAdminLoggedIn") === "true";
+  const isLocalAdmin = sessionStorage.getItem("isAdminLoggedIn") === "true";
 
   if (!isAdmin && !isLocalAdmin) {
     // Redirect to dashboard if user is not an admin

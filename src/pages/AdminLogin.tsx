@@ -8,20 +8,20 @@ import { Shield, Lock, Mail, Eye, EyeOff, KeyRound } from "lucide-react";
 import { motion } from "framer-motion";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('admin@amassmiddleeast.com');
-  const [password, setPassword] = useState('@massmiddleeast');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     setIsLoading(true);
 
     // Simple credential check
     if (email === 'admin@amassmiddleeast.com' && password === '@massmiddleeast') {
-      localStorage.setItem('isAdminLoggedIn', 'true');
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
       toast({
         title: "Login successful",
         description: "Welcome to the Admin Panel!",
@@ -78,20 +78,26 @@ const AdminLogin = () => {
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-6">
+            {/* Visually hidden fake inputs to trick browser autofill */}
+            <input type="text" name="username" style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} tabIndex={-1} readOnly />
+            <input type="password" name="password" style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} tabIndex={-1} readOnly />
+
             {/* Email Field */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
-                Admin Email
+              <Label htmlFor="adm-uid" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
+                System ID
               </Label>
               <div className="relative">
                 <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
-                  id="email"
-                  type="email"
+                  id="adm-uid"
+                  name="adm-uid"
+                  type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@amassmiddleeast.com"
+                  placeholder="Enter System Email"
                   required
+                  autoComplete="off"
                   className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-4 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
                 />
               </div>
@@ -99,19 +105,21 @@ const AdminLogin = () => {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
-                Secure Password
+              <Label htmlFor="adm-pwd" className="text-[10px] font-bold tracking-widest text-slate-500 uppercase font-mono px-1">
+                Passkey
               </Label>
               <div className="relative">
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                 <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
+                  id="adm-pwd"
+                  name="adm-pwd"
+                  type="text"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
+                  placeholder="Enter Access Key"
                   required
-                  className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-11 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
+                  autoComplete="off"
+                  className={`bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-11 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300 ${!showPassword ? 'no-autofill-password' : ''}`}
                 />
                 <button
                   type="button"

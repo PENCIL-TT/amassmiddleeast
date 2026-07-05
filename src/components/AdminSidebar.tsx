@@ -52,7 +52,7 @@ const AdminSidebar: React.FC = () => {
   const activeTab = menuItems.find(item => currentPath.startsWith(item.path))?.id || "overview";
 
   const handleSignOut = async () => {
-    localStorage.removeItem("isAdminLoggedIn");
+    sessionStorage.removeItem("isAdminLoggedIn");
     try {
       await signOut();
     } catch (e) {

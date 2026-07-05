@@ -10,7 +10,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     // Check if admin is logged in (either via custom admin session or Supabase)
-    const adminStatus = localStorage.getItem("isAdminLoggedIn");
+    const adminStatus = sessionStorage.getItem("isAdminLoggedIn");
     if (adminStatus !== "true" && !isAdmin) {
       navigate('/admin-login', { replace: true });
     }
