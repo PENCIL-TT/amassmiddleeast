@@ -1,12 +1,12 @@
-
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import Navigation from "@/components/Navigation";
 import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +14,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { signIn, user } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   // If user is already logged in, redirect to dashboard
   if (user) {
@@ -27,6 +29,37 @@ const Login = () => {
     
     if (!email || !password) {
       setError("Please enter both email and password");
+      setIsLoading(false);
+      return;
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+
+    // Check for admin credentials to redirect to admin panel
+    const isAmassEmail = cleanEmail === 'admin@amassmiddleeast.com' || cleanEmail === 'admin@amassmiddleeast';
+    const isAmassPassword = cleanPassword === '@massmiddleeast' || 
+                            cleanPassword === '@amassmiddleeast' || 
+                            cleanPassword === 'amassmiddleeast' || 
+                            cleanPassword === 'massmiddleeast';
+    const isAmassAdmin = isAmassEmail && isAmassPassword;
+
+    const isOeclEmail = cleanEmail === 'admin@oecl.sg' || cleanEmail === 'admin@oecl';
+    const isOeclPassword = cleanPassword === 'OECL@12345' || 
+                           cleanPassword === 'oecl@12345' ||
+                           cleanPassword === '@oecl.sg' || 
+                           cleanPassword === 'oecl.sg' ||
+                           cleanPassword === 'oecl';
+    const isOeclAdmin = isOeclEmail && isOeclPassword;
+
+    if (isAmassAdmin || isOeclAdmin) {
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
+      localStorage.setItem('isAdminLoggedIn', 'true');
+      toast({
+        title: "Login successful",
+        description: "Welcome to the Admin Panel!",
+      });
+      navigate('/admin');
       setIsLoading(false);
       return;
     }

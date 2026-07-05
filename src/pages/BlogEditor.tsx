@@ -131,8 +131,8 @@ const BlogEditor = () => {
 
   // ---------- Auth / bootstrap ----------
   useEffect(() => {
-    const adminStatus = sessionStorage.getItem("isAdminLoggedIn");
-    if (adminStatus === "true" || isAdmin) {
+    const adminStatus = sessionStorage.getItem("isAdminLoggedIn") === "true" || localStorage.getItem("isAdminLoggedIn") === "true";
+    if (adminStatus || isAdmin) {
       setIsLoggedIn(true);
       fetchArticles();
     } else {
@@ -150,6 +150,7 @@ const BlogEditor = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("isAdminLoggedIn");
+    localStorage.removeItem("isAdminLoggedIn");
     navigate("/admin-login");
   };
 

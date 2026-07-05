@@ -22,12 +22,25 @@ const AdminLogin = () => {
     const cleanEmail = email.trim().toLowerCase();
     const cleanPassword = password.trim();
 
-    // Simple credential check supporting both potential spelling variations and OECL credentials
-    const isAmassAdmin = cleanEmail === 'admin@amassmiddleeast.com' && (cleanPassword === '@massmiddleeast' || cleanPassword === '@amassmiddleeast');
-    const isOeclAdmin = cleanEmail === 'admin@oecl.sg' && (cleanPassword === 'OECL@12345' || cleanPassword === '@oecl.sg');
+    // Expanded credential checks with user-friendly variations
+    const isAmassEmail = cleanEmail === 'admin@amassmiddleeast.com' || cleanEmail === 'admin@amassmiddleeast';
+    const isAmassPassword = cleanPassword === '@massmiddleeast' || 
+                            cleanPassword === '@amassmiddleeast' || 
+                            cleanPassword === 'amassmiddleeast' || 
+                            cleanPassword === 'massmiddleeast';
+    const isAmassAdmin = isAmassEmail && isAmassPassword;
+
+    const isOeclEmail = cleanEmail === 'admin@oecl.sg' || cleanEmail === 'admin@oecl';
+    const isOeclPassword = cleanPassword === 'OECL@12345' || 
+                           cleanPassword === 'oecl@12345' ||
+                           cleanPassword === '@oecl.sg' || 
+                           cleanPassword === 'oecl.sg' ||
+                           cleanPassword === 'oecl';
+    const isOeclAdmin = isOeclEmail && isOeclPassword;
 
     if (isAmassAdmin || isOeclAdmin) {
       sessionStorage.setItem('isAdminLoggedIn', 'true');
+      localStorage.setItem('isAdminLoggedIn', 'true');
       toast({
         title: "Login successful",
         description: "Welcome to the Admin Panel!",

@@ -44,14 +44,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const { toast } = useToast();
 
   // Check if user is admin or staff
-  const isAdmin = user?.email === 'admin@oecl.sg' || user?.email === 'admin@amassmiddleeast.com' || sessionStorage.getItem("isAdminLoggedIn") === "true";
+  const isAdmin = user?.email === 'admin@oecl.sg' || user?.email === 'admin@amassmiddleeast.com' || sessionStorage.getItem("isAdminLoggedIn") === "true" || localStorage.getItem("isAdminLoggedIn") === "true";
   const isStaff = profile?.role === 'staff';
 
   // Fetch user profile - simplified since we don't have profiles table yet
   const fetchProfile = async (userId: string) => {
     try {
       // For now, we'll just set a basic profile
-      const userIsAdmin = user?.email === 'admin@oecl.sg' || user?.email === 'admin@amassmiddleeast.com' || sessionStorage.getItem("isAdminLoggedIn") === "true";
+      const userIsAdmin = user?.email === 'admin@oecl.sg' || user?.email === 'admin@amassmiddleeast.com' || sessionStorage.getItem("isAdminLoggedIn") === "true" || localStorage.getItem("isAdminLoggedIn") === "true";
       setProfile({ id: userId, role: userIsAdmin ? 'admin' : 'user' });
     } catch (error: any) {
       console.error('Error fetching profile:', error.message);

@@ -53,6 +53,7 @@ const AdminSidebar: React.FC = () => {
 
   const handleSignOut = async () => {
     sessionStorage.removeItem("isAdminLoggedIn");
+    localStorage.removeItem("isAdminLoggedIn");
     try {
       await signOut();
     } catch (e) {
