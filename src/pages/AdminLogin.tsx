@@ -19,8 +19,14 @@ const AdminLogin = () => {
     if (e) e.preventDefault();
     setIsLoading(true);
 
-    // Simple credential check
-    if (email === 'admin@amassmiddleeast.com' && password === '@massmiddleeast') {
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+
+    // Simple credential check supporting both potential spelling variations and OECL credentials
+    const isAmassAdmin = cleanEmail === 'admin@amassmiddleeast.com' && (cleanPassword === '@massmiddleeast' || cleanPassword === '@amassmiddleeast');
+    const isOeclAdmin = cleanEmail === 'admin@oecl.sg' && (cleanPassword === 'OECL@12345' || cleanPassword === '@oecl.sg');
+
+    if (isAmassAdmin || isOeclAdmin) {
       sessionStorage.setItem('isAdminLoggedIn', 'true');
       toast({
         title: "Login successful",
@@ -113,13 +119,13 @@ const AdminLogin = () => {
                 <Input
                   id="adm-pwd"
                   name="adm-pwd"
-                  type="text"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter Access Key"
                   required
                   autoComplete="off"
-                  className={`bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-11 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300 ${!showPassword ? 'no-autofill-password' : ''}`}
+                  className="bg-[#eef2f7] border-none text-slate-800 h-11 pl-11 pr-11 rounded-xl shadow-[inset_3px_3px_6px_#cbd5e1,_inset_-3px_-3px_6px_#ffffff] focus:shadow-[inset_1px_1px_3px_#cbd5e1,_inset_-1px_-1px_3px_#ffffff,_0_0_0_2px_rgba(37,99,235,0.25)] focus-visible:ring-0 focus-visible:ring-offset-0 text-sm transition-all duration-300"
                 />
                 <button
                   type="button"

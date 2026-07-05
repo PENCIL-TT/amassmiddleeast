@@ -18,8 +18,8 @@ const AdminRoute: React.FC<AdminRouteProps> = ({ children }) => {
   const isLocalAdmin = sessionStorage.getItem("isAdminLoggedIn") === "true";
 
   if (!isAdmin && !isLocalAdmin) {
-    // Redirect to dashboard if user is not an admin
-    return <Navigate to="/dashboard" state={{ from: location }} />;
+    // Redirect to admin login if user is not an admin
+    return <Navigate to="/admin-login" state={{ from: location }} />;
   }
 
   return <>{children}</>;

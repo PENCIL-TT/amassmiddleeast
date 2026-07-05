@@ -50,10 +50,13 @@ const BlogAdmin = () => {
   }, []);
 
   const handleLogin = () => {
-    if (
-      (email === 'admin@oecl.sg' && password === 'OECL@12345') ||
-      (email === 'admin@amassmiddleeast.com' && password === '@massmiddleeast')
-    ) {
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanPassword = password.trim();
+
+    const isAmassAdmin = cleanEmail === 'admin@amassmiddleeast.com' && (cleanPassword === '@massmiddleeast' || cleanPassword === '@amassmiddleeast');
+    const isOeclAdmin = cleanEmail === 'admin@oecl.sg' && (cleanPassword === 'OECL@12345' || cleanPassword === '@oecl.sg');
+
+    if (isAmassAdmin || isOeclAdmin) {
       setIsAuthenticated(true);
       sessionStorage.setItem('isAdminLoggedIn', 'true');
       toast({
